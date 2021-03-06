@@ -102,18 +102,14 @@
             android:layout_gravity="bottom"
             android:orientation="horizontal">
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
+            <ImageView
                 android:id="@+id/addAttachments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="0dp"
-                app:elevation="0dp"
-                app:fabCustomSize="45dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="12dp"
-                app:maxImageSize="20dp"
                 android:src="@drawable/ic_plus_icon"
-                app:tint="@color/colorWhite" />
+                />
 
             <EditText
                 android:layout_weight="1"
@@ -131,13 +127,13 @@
                 android:id="@+id/sendMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:backgroundTint="@color/colorPrimary"
+                app:backgroundTint="@color/colorPurple"
                 android:layout_marginRight="10dp"
                 android:padding="0dp"
                 app:elevation="0dp"
                 app:fabCustomSize="45dp"
                 app:maxImageSize="20dp"
-                android:src="@drawable/ic_plus_icon"
+                android:src="@drawable/send_icon"
                 app:tint="@color/colorWhite" />
         </LinearLayout>
     </FrameLayout>
