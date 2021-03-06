@@ -10,12 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigChatApp">
-        <activity android:name=".ChatModule.ChatActivity"></activity>
-        <activity android:name=".OnBoarding.OtpVerifyActivity" />
-        <activity android:name=".Dashboard.DashboardActivity" />
-        <activity android:name=".MainActivity">
         <activity android:name=".Dashboard.DashboardActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar" >
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
         <activity android:name=".ChatModule.ChatActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,10 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".OnBoarding.OtpVerifyActivity" />
-        <activity android:name=".Dashboard.DashboardActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
         <activity android:name=".MainActivity">
 
         </activity>
