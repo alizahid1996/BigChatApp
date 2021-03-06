@@ -19,6 +19,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="10dp" />
     
     <FrameLayout
         android:layout_width="match_parent"
@@ -45,7 +54,7 @@
             android:background="@null"
             android:elevation="12dp"
             app:tabSelectedTextColor="@color/white"
-            app:tabBackground="@drawable/main_gradient"
+            app:tabBackground="@drawable/tab_backround"
             app:tabIndicator="@color/colorWhite"
             android:backgroundTint="@null"
             app:tabTextColor="@color/black"
