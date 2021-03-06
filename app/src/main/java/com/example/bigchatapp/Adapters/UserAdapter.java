@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.bigchatapp.Models.UserModel;
 import com.example.bigchatapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         UserModel userModel = list.get(position);
-
+        Picasso.get().load(userModel.getUserPic()).placeholder(R.drawable.image).into(holder.imageView);
+        holder.userName.setText(userModel.getUserName());
+        holder.userLastMessage.setText(userModel.getLastMessage());
 
     }
 
