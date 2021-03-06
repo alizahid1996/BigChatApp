@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusedByDefault="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".ChatModule.ChatActivity">
+
+    <!-- Custom Toolbar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPurple"
+        android:elevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/activityLabel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="65dp"
+            android:fontFamily="@font/bree_serif"
+            android:gravity="center"
+            android:text="Chat"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="#F1EFEF"/>
+
+        <nl.dionsegijn.konfetti.KonfettiView
+            android:id="@+id/viewKonfetti"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/receiverImage"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/person_placeholder" />
+
+            <TextView
+                android:id="@+id/receiverName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:fontFamily="@font/bree_serif"
+                android:textColor="#4C5264"
+                android:textSize="16sp" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="250dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_rectangle_gradient" />
+
+          <!--  <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chatMessgaerecyclerView"
+                android:layout_width="match_parent"
+                android:overScrollMode="never"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="70dp"
+                android:paddingHorizontal="18dp" />-->
+
+            <include layout="@layout/item_sender"/>
+            <include layout="@layout/item_receiver"/>
+            <include layout="@layout/item_sender"/>
+            <include layout="@layout/item_receiver"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addAttachments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="0dp"
+                app:elevation="0dp"
+                app:fabCustomSize="45dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="12dp"
+                app:maxImageSize="20dp"
+                android:src="@drawable/ic_plus_icon"
+                app:tint="@color/colorWhite" />
+
+            <EditText
+                android:layout_weight="1"
+                android:id="@+id/chatMessage"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/write_message_back"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="Write your message…"
+                android:paddingHorizontal="18dp"
+                android:layout_marginRight="12dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/sendMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/colorPrimary"
+                android:layout_marginRight="10dp"
+                android:padding="0dp"
+                app:elevation="0dp"
+                app:fabCustomSize="45dp"
+                app:maxImageSize="20dp"
+                android:src="@drawable/ic_plus_icon"
+                app:tint="@color/colorWhite" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

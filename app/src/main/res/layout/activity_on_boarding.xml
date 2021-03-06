@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OnBoarding.OnBoardingActivity">
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:padding="2dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/back_button_icon"
+        app:tint="@color/colorDarkPurple" />
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="bottom"
+        app:cardElevation="3dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/colorWhite">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="600dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/forgetPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/average_sans"
+                app:layout_constraintVertical_bias="0"
+                android:textColor="@color/colorDarkPurple"
+                android:text="Welcome to Big Chat"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/enterResetPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Enter your phone number to get started"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="16sp"
+                android:textColor="#1D2226"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/forgetPassword" />
+
+            <LinearLayout
+                android:id="@+id/linearOTP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/enterResetPassword">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputUserPhoneLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:hint="Mobile Number "
+                    app:boxCornerRadiusBottomEnd="5dp"
+                    app:boxCornerRadiusBottomStart="5dp"
+                    app:boxCornerRadiusTopEnd="5dp"
+                    app:boxCornerRadiusTopStart="5dp"
+                    app:boxStrokeErrorColor="@color/colorBlack"
+                    app:boxStrokeWidth="0.75dp"
+                    app:boxStrokeColor="@color/colorDarkPurple"
+                    app:boxStrokeWidthFocused="1dp"
+                    app:errorEnabled="true"
+                    app:hintTextColor="@color/colorDarkPurple"
+                    app:startIconTint="@color/colorLightGrey">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:inputType="number"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edPhone"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:hint="Phone"
+                    app:boxCornerRadiusBottomEnd="40dp"
+                    app:boxCornerRadiusBottomStart="40dp"
+                    app:boxCornerRadiusTopEnd="40dp"
+                    app:boxCornerRadiusTopStart="40dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:boxStrokeErrorColor="@color/colorBlack"
+                    app:boxStrokeWidth="0.75dp"
+                    app:boxStrokeWidthFocused="1dp"
+                    app:errorEnabled="true"
+                    app:layout_constraintTop_toBottomOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingStart="30dp"
+                        android:paddingEnd="30dp"
+                        android:textColorHint="@color/colorLightGrey" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/defaultText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="By continuing, I confirm that I read and agree to the\n Terms and Conditions and Privacy Policy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="29dp"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="12dp"
+                android:layout_marginLeft="12dp"
+                app:layout_constraintTop_toBottomOf="@+id/linearOTP" />
+            <!-- OTP -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sendOTP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                app:layout_constraintTop_toBottomOf="@+id/defaultText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="20dp"
+                app:backgroundTint="@null"
+                android:text="Send OTP Code"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/btn_gradient"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

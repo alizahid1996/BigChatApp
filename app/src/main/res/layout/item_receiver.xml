@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:layout_marginTop="16dp">
+
+    <TextView
+        android:id="@+id/messageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:background="@drawable/chat_design_receiver"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center|start"
+        android:maxWidth="270dp"
+        android:minHeight="40dp"
+        android:paddingVertical="8dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="26dp"
+        android:text="Hey Miss Sarah, I am coming there!"
+        android:textColor="@color/colorDarkGrey"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="26dp" />
+
+    <TextView
+        android:id="@+id/messageTime"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:text="12:02pm"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/roboto_light"
+        android:gravity="center|start"
+        android:maxWidth="270dp"
+        android:textColor="#7F8FA4"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/messageText" />
+
+    <ImageView
+        android:id="@+id/reactionEmoji"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_fb_love"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/messageText"
+        app:layout_constraintEnd_toEndOf="@+id/messageText"
+        app:layout_constraintStart_toEndOf="@+id/messageText"
+        app:layout_constraintTop_toTopOf="@+id/messageText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
