@@ -12,8 +12,7 @@
         android:theme="@style/Theme.BigChatApp">
         <activity android:name=".ChatModule.ChatActivity"></activity>
         <activity android:name=".OnBoarding.OtpVerifyActivity" />
-        <activity android:name=".Dashboard.DashboardActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
         <activity android:name=".Dashboard.DashboardActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar" >
             <intent-filter>
@@ -22,9 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
 
-        </activity>
     </application>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
