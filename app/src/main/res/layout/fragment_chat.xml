@@ -6,6 +6,11 @@
     tools:context=".Dashboard.ui.ChatFragment">
 
    <include layout="@layout/item_chat_users"/>
+   <include layout="@layout/item_chat_users"/>
+   <include layout="@layout/item_chat_users"/>
+   <include layout="@layout/item_chat_users"/>
+   <include layout="@layout/item_chat_users"/>
+   <include layout="@layout/item_chat_users"/>
 
 
 </FrameLayout>
