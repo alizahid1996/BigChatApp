@@ -59,7 +59,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <!-- <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/receiverImage"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -76,7 +76,7 @@
                 android:gravity="center"
                 android:fontFamily="@font/bree_serif"
                 android:textColor="#4C5264"
-                android:textSize="16sp" />
+                android:textSize="16sp" />-->
 
             <View
                 android:id="@+id/view2"
@@ -85,6 +85,30 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/ic_rectangle_gradient" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_gravity="end"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivVoiceCall"
+                    android:src="@drawable/ic_voice_call"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iVideoCall"
+                    android:src="@drawable/ic_video_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/messageDate"
@@ -161,7 +185,9 @@
                 app:maxImageSize="20dp"
                 android:src="@drawable/send_icon"
                 app:tint="@color/colorWhite" />
+
         </LinearLayout>
+
     </FrameLayout>
 
 </LinearLayout>
