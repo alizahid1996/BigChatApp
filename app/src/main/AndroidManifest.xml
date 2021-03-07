@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigChatApp">
-        <activity android:name=".UserProfileDialogActivity"></activity>
+        <activity android:name=".UserProfileDialogActivity"/>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar">
@@ -36,6 +36,7 @@
             android:name=".Dashboard.DashboardActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar" />
     </application>
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
