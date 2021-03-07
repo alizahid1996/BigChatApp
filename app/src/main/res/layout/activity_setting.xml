@@ -51,10 +51,8 @@
             android:id="@+id/settingImage"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginStart="16dp"
             android:padding="5dp"
             android:src="@drawable/image"
-            android:layout_marginLeft="16dp"
             app:tint="@color/colorWhite" />
 
         <ImageView
@@ -66,77 +64,129 @@
             android:layout_marginTop="-25dp"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ed_user_Name"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="0dp"
-                android:gravity="center"
-                android:hint="UserName"
-                android:orientation="vertical"
-                app:boxStrokeColor="@color/white"
-                app:boxStrokeErrorColor="@color/colorWhite"
-                app:boxStrokeWidth="0.75dp"
-                app:boxStrokeWidthFocused="1dp"
-                app:errorEnabled="true"
-                app:hintTextColor="#FFFFFF">
-
-                <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/user_Name"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="28sp"
+                    android:text="Shamima Afrin Omi"
                     android:inputType="textPersonName"
-                    android:maxLines="1"
                     android:fontFamily="@font/bree_serif"
-                    android:textColor="#FFFFFF"
-                    android:textColorHint="#FFFFFF" />
+                    android:textColor="#FFFFFF" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:src="@drawable/ic_pencil_icon"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ed_user_About"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="0dp"
-                android:gravity="center"
-                android:hint="About"
-                android:orientation="vertical"
-                app:boxStrokeColor="@color/white"
-                app:boxStrokeErrorColor="@color/colorWhite"
-                app:boxStrokeWidth="0.75dp"
-                app:boxStrokeWidthFocused="1dp"
-                app:errorEnabled="true"
-                app:hintTextColor="#FFFFFF">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/user_About"
-                    android:layout_width="match_parent"
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/userStatus"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:text="No talk, chat only"
                     android:maxLines="1"
+                    android:textSize="18sp"
                     android:fontFamily="@font/bree_serif"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#FFFFFF" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
         </LinearLayout>
 
+        <!--  Layout About -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivAccountIcon"
+                android:src="@drawable/ic_account_icon"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvAccountApp"
+                android:text="Account"
+                android:textSize="22sp"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!--  Layout Help -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivHelp"
+                android:src="@drawable/ic_help_icon"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHelp"
+                android:text="Help"
+                android:textSize="22sp"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!--  Layout Privacy Policy -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivPrivacyPolicy"
+                android:src="@drawable/ic_privacy_icon"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPrivacyPolicy"
+                android:text="Privacy Policy"
+                android:textSize="22sp"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Layout Button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -146,8 +196,8 @@
                 android:id="@+id/submitOTP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/pinView"
+                android:layout_marginTop="100dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvAccountApp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="100dp"
@@ -157,72 +207,9 @@
                 android:background="@drawable/btn_gradient"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
+
         </LinearLayout>
 
-
-
-
-
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/linear_bg"
-        android:padding="40dp">
-
-
-        <TextView
-            android:id="@+id/privacyPolicy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Privacy Policy"
-            android:drawablePadding="15dp"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:textSize="18sp"
-            android:layout_marginLeft="50dp"
-            android:fontFamily="@font/roboto_bold"/>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="18sp"
-            android:layout_marginLeft="50dp"
-            android:fontFamily="@font/roboto_bold"/>
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="18sp"
-            android:layout_marginLeft="50dp"
-            android:fontFamily="@font/roboto_bold" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_marginLeft="50dp"
-            android:fontFamily="@font/roboto_bold"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_marginLeft="50dp"
-            android:textSize="18sp"
-            android:fontFamily="@font/roboto_bold" />
-    </LinearLayout>
-
-
 
 </RelativeLayout>

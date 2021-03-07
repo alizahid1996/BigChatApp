@@ -10,17 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigChatApp">
-        <activity android:name=".UserProfileDialogActivity"></activity>
+        <activity android:name=".UserProfileDialogActivity"/>
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
-        <activity android:name=".Menu.SettingActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".Menu.SettingActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar">
+
         </activity>
         <activity android:name=".ChatModule.ChatActivity" />
         <activity android:name=".OnBoarding.OtpVerifyActivity" />
