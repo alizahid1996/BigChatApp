@@ -58,4 +58,7 @@ dependencies {
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Circular Status View
+    implementation 'com.devlomi:circularstatusview:1.0.1'
 }
