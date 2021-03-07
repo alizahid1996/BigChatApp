@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
+    android:background="@drawable/main_gradient"
     android:focusedByDefault="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
@@ -14,11 +16,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorPurple"
         android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/back_button_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
 
         <TextView
             android:id="@+id/activityLabel"
@@ -35,42 +43,40 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="3dp"
+        android:background="@drawable/messages_layout_design"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:background="#F1EFEF"/>
-
-        <nl.dionsegijn.konfetti.KonfettiView
-            android:id="@+id/viewKonfetti"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+<!--        <nl.dionsegijn.konfetti.KonfettiView-->
+<!--            android:id="@+id/viewKonfetti"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <!-- <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/receiverImage"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="22dp"
-                android:src="@drawable/person_placeholder" />
+                android:src="@drawable/image" />
 
             <TextView
                 android:id="@+id/receiverName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Shamima Afrin Omi"
                 android:layout_marginHorizontal="50dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:fontFamily="@font/bree_serif"
                 android:textColor="#4C5264"
-                android:textSize="16sp" />
+                android:textSize="16sp" />-->
 
             <View
                 android:id="@+id/view2"
@@ -80,6 +86,44 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/ic_rectangle_gradient" />
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_gravity="end"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivVoiceCall"
+                    android:src="@drawable/ic_voice_call"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/iVideoCall"
+                    android:src="@drawable/ic_video_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/messageDate"
+                android:padding="10dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/text_view_shape"
+                android:layout_marginTop="10dp"
+                android:text="Aug, 15 2020"/>
+
           <!--  <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/chatMessgaerecyclerView"
                 android:layout_width="match_parent"
@@ -88,10 +132,16 @@
                 android:layout_marginBottom="70dp"
                 android:paddingHorizontal="18dp" />-->
 
-            <include layout="@layout/item_sender"/>
+            <include layout="@layout/item_sender" />
             <include layout="@layout/item_receiver"/>
             <include layout="@layout/item_sender"/>
             <include layout="@layout/item_receiver"/>
+
+            <!--<ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F1EFEF"
+                android:scaleType="centerCrop" />-->
         </LinearLayout>
 
         <LinearLayout
@@ -135,7 +185,9 @@
                 app:maxImageSize="20dp"
                 android:src="@drawable/send_icon"
                 app:tint="@color/colorWhite" />
+
         </LinearLayout>
+
     </FrameLayout>
 
 </LinearLayout>

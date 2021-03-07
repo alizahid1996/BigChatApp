@@ -1,6 +1,7 @@
 package com.example.bigchatapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.bigchatapp.ChatModule.ChatActivity;
 import com.example.bigchatapp.Models.UserModel;
 import com.example.bigchatapp.R;
 import com.squareup.picasso.Picasso;
@@ -58,6 +60,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             imageView = itemView.findViewById(R.id.profileImage);
             userName = itemView.findViewById(R.id.userName);
             userLastMessage = itemView.findViewById(R.id.userLastMessage);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, ChatActivity.class);
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }
