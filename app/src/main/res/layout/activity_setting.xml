@@ -151,7 +151,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="100dp"
-                android:text="SUBMIT"
+                android:text="Update"
                 android:fontFamily="@font/bree_serif"
                 app:backgroundTint="@null"
                 android:background="@drawable/btn_gradient"
