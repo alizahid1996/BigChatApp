@@ -10,28 +10,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigChatApp">
-        <activity android:name=".SplashActivity"
+        <activity android:name=".UserProfileDialogActivity"></activity>
+        <activity
+            android:name=".SplashActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar">
+
+        </activity>
+        <activity
+            android:name=".OnBoarding.OnBoardingActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OnBoarding.OnBoardingActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
-        <activity android:name=".ChatModule.ChatActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
-        <activity android:name=".OnBoarding.OtpVerifyActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
+        <activity
+            android:name=".ChatModule.ChatActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
+        <activity
+            android:name=".OnBoarding.OtpVerifyActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".Dashboard.DashboardActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
-
-
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -40,7 +44,8 @@
         tools:ignore="ScopedStorage"
         tools:remove="android:maxSdkVersion" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>
