@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.bigchatapp.Adapters.FragmentAdapter;
+import com.example.bigchatapp.ChatModule.ChatActivity;
 import com.example.bigchatapp.Menu.SettingActivity;
 import com.example.bigchatapp.R;
 import com.example.bigchatapp.databinding.ActivityDashboardBinding;
@@ -53,6 +54,11 @@ public class DashboardActivity extends AppCompatActivity {
 
                             case R.id.logout:
                                 Toast.makeText(DashboardActivity.this, "Opens a Logout Dialog", Toast.LENGTH_SHORT).show();
+                                break;
+
+                            case R.id.chat:
+                                Intent in = new Intent(DashboardActivity.this, ChatActivity.class);
+                                startActivity(in);
                                 break;
                         }
 

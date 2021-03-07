@@ -37,17 +37,6 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/menuIcon"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="12dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_menu_icon"
-            app:tint="@color/colorPrimaryVeryLight"
-            />
-
     </RelativeLayout>
 
     <LinearLayout
@@ -135,13 +124,13 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvAccountApp"
-                android:text="Account"
-                android:textSize="22sp"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center_vertical"
+                android:text="Account"
                 android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <!--  Layout Help -->
@@ -162,7 +151,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvHelp"
                 android:text="Help"
-                android:textSize="22sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/white"
@@ -188,7 +177,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvPrivacyPolicy"
                 android:text="Privacy Policy"
-                android:textSize="22sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/white"

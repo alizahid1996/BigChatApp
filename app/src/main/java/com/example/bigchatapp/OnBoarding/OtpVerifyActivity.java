@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.bigchatapp.Dashboard.DashboardActivity;
 import com.example.bigchatapp.R;
+import com.example.bigchatapp.UserProfileDialogActivity;
 import com.example.bigchatapp.databinding.ActivityOtpVerifyBinding;
 
 public class OtpVerifyActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class OtpVerifyActivity extends AppCompatActivity {
         });
 
         binding.submitOTP.setOnClickListener(v -> {
-            Intent intent = new Intent(OtpVerifyActivity.this, DashboardActivity.class);
+            Intent intent = new Intent(OtpVerifyActivity.this, UserProfileDialogActivity.class);
             startActivity(intent);
         });
     }

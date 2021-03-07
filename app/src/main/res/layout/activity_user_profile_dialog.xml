@@ -8,38 +8,17 @@
     android:background="@drawable/blur_background"
     tools:context=".UserProfileDialogActivity">
 
-    <!-- Back Button -->
-    <LinearLayout
-        android:id="@+id/linear5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/ivBackButton"
-            android:background="@drawable/back_button_icon"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         app:cardUseCompatPadding="false"
         android:layout_marginHorizontal="50dp"
-        android:layout_height="320dp"
+        android:layout_height="340dp"
         android:layout_marginTop="160dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear5"
+        app:layout_constraintTop_toBottomOf="parent"
         app:cardCornerRadius="10dp">
 
         <!--  container TextViews -->
@@ -100,16 +79,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnTakePhoto"
+                android:id="@+id/nextButton"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/btn_gradient"
                 android:text="Next"
                 app:backgroundTint="@null"
@@ -128,19 +107,19 @@
         app:cardCornerRadius="100dp"
         app:cardBackgroundColor="#F6F6F6"
         android:layout_gravity="center"
-        android:layout_marginTop="-380dp"
+        android:layout_marginTop="-400dp"
         android:src="@drawable/ic_launcher_background"
         android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card" >
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/peronImage"
             android:src="@drawable/ic_photo"
             android:layout_gravity="center"
-            android:layout_width="70dp"
-            android:layout_height="70dp"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
 
     </com.google.android.material.card.MaterialCardView>
 
