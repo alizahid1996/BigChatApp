@@ -13,7 +13,7 @@
         <activity android:name=".UserProfileDialogActivity"></activity>
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar">
+            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
         <activity android:name=".Menu.SettingActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar">
             <intent-filter>
@@ -35,16 +35,6 @@
             android:theme="@style/Theme.BigChatApp.NoActionbar" >
 
         </activity>
-        <activity
-            android:name=".ChatModule.ChatActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar" />
-        <activity
-            android:name=".OnBoarding.OtpVerifyActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar" />
-        <activity android:name=".MainActivity" />
-        <activity
-            android:name=".Dashboard.DashboardActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
