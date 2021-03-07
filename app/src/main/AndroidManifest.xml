@@ -14,16 +14,16 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar">
-
-        </activity>
-        <activity
-            android:name=".OnBoarding.OnBoardingActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".OnBoarding.OnBoardingActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar" >
+
         </activity>
         <activity
             android:name=".ChatModule.ChatActivity"
