@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "929285725732",
+    "project_id": "bigchat-ef102",
+    "storage_bucket": "bigchat-ef102.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929285725732:android:dce2156dd3046ec31e42b1",
+        "android_client_info": {
+          "package_name": "com.example.bigchatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "929285725732-q9qql829acvkcuikugckbimrob19nmj5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bigchatapp",
+            "certificate_hash": "b1b01b7bd01f10b84f346ac46e0aca132ee18cd5"
+          }
+        },
+        {
+          "client_id": "929285725732-mbf9ljhfoubinskk1l6jod4dhrmf9vu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoMyszGChYyJg6IWROrLo4wOtnvffWhBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "929285725732-mbf9ljhfoubinskk1l6jod4dhrmf9vu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

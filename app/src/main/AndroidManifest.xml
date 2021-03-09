@@ -10,22 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigChatApp">
-
-        <activity android:name=".Calling.OutGoingCallActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
+        <activity android:name=".Calling.OutGoingCallActivity"></activity>
         <activity android:name=".Calling.IncomingCallActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
+            android:theme="@style/Theme.BigChatApp.NoActionbar">
+
+        </activity>
         <activity
             android:name=".UserProfileDialogActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
+            android:theme="@style/Theme.BigChatApp" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Menu.SettingActivity"
@@ -44,7 +40,13 @@
             android:theme="@style/Theme.BigChatApp.NoActionbar" />
         <activity
             android:name=".OnBoarding.OnBoardingActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar" />
+            android:theme="@style/Theme.BigChatApp.NoActionbar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />

@@ -22,6 +22,9 @@ public class OtpVerifyActivity extends AppCompatActivity {
         binding = ActivityOtpVerifyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        String phoneNumber = getIntent().getStringExtra("phoneNumber");
+        binding.phoneNumberonOTP.setText("Verify" + phoneNumber);
+
       /*  binding.backButton.setOnClickListener(v -> {
 
             finish();

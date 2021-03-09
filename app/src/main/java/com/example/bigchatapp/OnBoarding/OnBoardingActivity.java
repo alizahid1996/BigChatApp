@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 
@@ -22,6 +23,10 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        String Number = binding.ccP.getSelectedCountryCodeWithPlus() + binding.phoneNumber.getText().toString().trim();
+        Log.d("Hy",Number);
 /*
 
         binding.backButton.setOnClickListener(v -> {
@@ -32,6 +37,7 @@ public class OnBoardingActivity extends AppCompatActivity {
 
         binding.btnSendOtp.setOnClickListener(v -> {
             Intent intent = new Intent(OnBoardingActivity.this,OtpVerifyActivity.class);
+           intent.putExtra("phoneNumber",Number);
             startActivity(intent);
         });
 
