@@ -7,5 +7,6 @@
         android:id="@+id/setting"/>
     <item android:title="Logout"
         android:id="@+id/logout"/>
-
+    <item android:title="Chat"
+        android:id="@+id/chat"/>
 </menu>

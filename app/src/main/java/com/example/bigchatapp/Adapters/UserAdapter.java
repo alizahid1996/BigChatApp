@@ -52,7 +52,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
-        TextView userName, userLastMessage;
+        TextView userName, userLastMessage, userMessageTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +60,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             imageView = itemView.findViewById(R.id.profileImage);
             userName = itemView.findViewById(R.id.userName);
             userLastMessage = itemView.findViewById(R.id.userLastMessage);
+            userMessageTime = itemView.findViewById(R.id.userMessageTime);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

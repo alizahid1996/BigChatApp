@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.bigchatapp.Dashboard.DashboardActivity;
 import com.example.bigchatapp.R;
+import com.example.bigchatapp.UserProfileDialogActivity;
 import com.example.bigchatapp.databinding.ActivityOtpVerifyBinding;
 
 public class OtpVerifyActivity extends AppCompatActivity {
@@ -21,13 +22,13 @@ public class OtpVerifyActivity extends AppCompatActivity {
         binding = ActivityOtpVerifyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.backButton.setOnClickListener(v -> {
+      /*  binding.backButton.setOnClickListener(v -> {
 
             finish();
         });
-
-        binding.submitOTP.setOnClickListener(v -> {
-            Intent intent = new Intent(OtpVerifyActivity.this, DashboardActivity.class);
+*/
+        binding.btnSendOtp.setOnClickListener(v -> {
+            Intent intent = new Intent(OtpVerifyActivity.this, UserProfileDialogActivity.class);
             startActivity(intent);
         });
     }

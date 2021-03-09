@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
 
-            startActivity(new Intent(context, DashboardActivity.class));
+            startActivity(new Intent(context, OnBoardingActivity.class));
             finish();
 
 

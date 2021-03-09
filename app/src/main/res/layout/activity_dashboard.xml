@@ -7,68 +7,90 @@
     android:background="@drawable/main_gradient"
     tools:context=".Dashboard.DashboardActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Messages"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/bree_serif"
-        android:layout_gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-
-    <!--<SearchView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Custom Toolbar -->
+    <RelativeLayout
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="10dp" />-->
-    
-    <FrameLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginHorizontal="5dp"
-        android:background="@drawable/messages_layout_design"/>
-    
-    <FrameLayout
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/tvToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="135dp"
+            android:gravity="center"
+            android:src="@drawable/logo"
+            android:text="Messages"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bree_serif"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <SearchView
+            android:id="@+id/searchIcon"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/menuIcon"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="@color/white"
+            android:padding="5dp"
+            app:tint="@color/white"
+            />
+
+        <ImageView
+            android:id="@+id/menuIcon"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_menu_icon"
+            app:tint="@color/colorPrimaryVeryLight"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/messages_layout_design"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="60dp">
+        android:layout_height="match_parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:tabIndicatorColor="#FFFFFF"
+            android:background="#56aa2e"
+            app:tabSelectedTextColor="@color/white"
+            android:backgroundTint="@null"
+            app:tabTextColor="#D1D1D1"
+            app:tabMaxWidth="0dp"
+            app:tabTextAppearance="@style/CustomTabText"
+            app:tabGravity="fill"
+            android:minWidth="200dp"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@null"
-            android:elevation="12dp"
-            app:tabSelectedTextColor="@color/white"
-            app:tabBackground="@drawable/tab_backround"
-            app:tabIndicator="@color/colorWhite"
-            android:backgroundTint="@null"
-            app:tabTextColor="@color/black"
-            app:tabMaxWidth="0dp"
-            app:tabTextAppearance="@style/CustomTabText"
-            app:tabGravity="fill"
-            android:minWidth="200dp"/>
+
+
         </androidx.viewpager.widget.ViewPager>
 
+    </LinearLayout>
 
 
 
-    </FrameLayout>
+
+
+
+
 
 
 

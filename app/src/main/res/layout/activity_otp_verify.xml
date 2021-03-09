@@ -1,151 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OnBoarding.OtpVerifyActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#56aa2e">
 
-    <ImageView
-        android:id="@+id/app_logo"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/backButton"
-        android:layout_width="30dp"
-        android:layout_height="50dp"
-        android:padding="2dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        app:layout_constraintStart_toStartOf="parent"
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/back_button_icon"
-        app:tint="@color/colorDarkPurple" />
-
-
-
-    <com.google.android.material.card.MaterialCardView
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_gravity="bottom"
-        app:cardElevation="3dp"
-        android:layout_marginBottom="16dp"
-        app:cardBackgroundColor="@color/colorWhite">
+        android:layout_height="wrap_content">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
+            android:id="@+id/logo"
+            android:src="@drawable/logo"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="60dp"
             android:layout_width="match_parent"
-            android:layout_height="600dp">
+            android:layout_height="130dp"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/verificationOTP"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/average_sans"
-                app:layout_constraintVertical_bias="0"
-                android:textColor="@color/colorDarkPurple"
-                android:text="OTP Verification"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/digitCode"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginHorizontal="16dp"
-                android:gravity="center"
-                android:text="Enter the 6-digit code sent to you at\n+92300XXXXXXX"
-                android:fontFamily="@font/roboto_regular"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="18sp"
-                android:textColor="#7F7F7F"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/verificationOTP" />
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/emailEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:layout_marginHorizontal="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="18sp"
-                android:textColor="#282F39"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/digitCode" />
-
-            <com.chaos.view.PinView
-                android:id="@+id/pinView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="74dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:itemCount="6"
-                app:itemWidth="40dp"
-                app:itemHeight="50dp"
-                app:lineWidth="1dp"
-                android:textColor="#7F7F7F"
-                android:textSize="16pt"
-                android:gravity="center"
-                app:lineColor="#E3E2E2"
-                style="@style/PinWidget.PinView"
-                app:itemRadius="5dp"
-                android:background="@color/colorTransparent"
-                android:itemBackground="@color/colorWhite"
-                android:inputType="number"
-                android:cursorVisible="true"
-                app:cursorColor="@color/colorPrimary"
-                app:hideLineWhenFilled="true"
-                app:layout_constraintTop_toBottomOf="@+id/emailEdit" />
+    <LinearLayout
+        android:id="@+id/linearnew"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
 
+        <com.google.android.material.textview.MaterialTextView
+            android:text="Waiting for OTP"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-            <!-- OTP -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/submitOTP"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="51dp"
-                app:layout_constraintTop_toBottomOf="@+id/pinView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginHorizontal="20dp"
-                android:text="SUBMIT"
-                android:fontFamily="@font/roboto_regular"
-                app:backgroundTint="@null"
-                android:background="@drawable/btn_gradient"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
+        <com.google.android.material.textview.MaterialTextView
+            android:text="Please enter the verification code sent at\n +92 807 5153 "
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/resendCode"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/roboto_regular"
-                android:textColor="@color/colorDarkPurple"
-                android:text="RESEND CODE"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/submitOTP"/>
+        <com.chaos.view.PinView
+            android:id="@+id/pinView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:itemCount="6"
+            app:itemWidth="40dp"
+            app:itemHeight="50dp"
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textColor="@color/white"
+            android:textSize="16pt"
+            android:gravity="center"
+            style="@style/PinWidget.PinView"
+            app:itemRadius="5dp"
+            android:background="#78bc59"
+            android:itemBackground="#76bc58"
+            android:inputType="number"
+            android:cursorVisible="true"
+            app:cursorColor="@color/colorPrimary"
+            app:hideLineWhenFilled="true"
+            app:lineWidth="0dp"
+            />
 
-    </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        app:layout_constraintTop_toBottomOf="@id/linearnew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSendOtp"
+            android:text="Confirm OTP"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_gradient"
+            app:backgroundTint="@color/white"
+            android:layout_marginTop="200dp"
+            android:textColor="#56aa2e"
+            android:elevation="6dp"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="60dp"/>
+
+    </RelativeLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,11 +7,10 @@
     android:background="@drawable/main_gradient"
     tools:context=".Menu.SettingActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linear19"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -29,16 +28,16 @@
             android:id="@+id/profileToolbarText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="center|start"
+            android:layout_marginHorizontal="65dp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/bree_serif"
+            android:gravity="center"
             android:text="Settings"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="12dp" />
+            android:textStyle="bold" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -125,13 +124,13 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvAccountApp"
-                android:text="Account"
-                android:textSize="22sp"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center_vertical"
+                android:text="Account"
                 android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
         <!--  Layout Help -->
@@ -152,7 +151,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvHelp"
                 android:text="Help"
-                android:textSize="22sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/white"
@@ -178,7 +177,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvPrivacyPolicy"
                 android:text="Privacy Policy"
-                android:textSize="22sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center_vertical"
                 android:textColor="@color/white"
@@ -193,7 +192,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/submitOTP"
+                android:id="@+id/btnUpdateProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
