@@ -22,28 +22,30 @@ public class OnBoardingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+/*
 
         binding.backButton.setOnClickListener(v -> {
 
             finish();
         });
+*/
 
-        binding.sendOTP.setOnClickListener(v -> {
+        binding.btnSendOtp.setOnClickListener(v -> {
             Intent intent = new Intent(OnBoardingActivity.this,OtpVerifyActivity.class);
             startActivity(intent);
         });
 
-        binding.userMobileLayout.setOnClickListener(v -> {
+        /*binding.userMobileLayout.setOnClickListener(v -> {
             if (isUp) {
                 slideLeft(binding.cardInternal);
             } else {
                 slideRight(binding.cardInternal);
             }
             isUp = !isUp;
-        });
+        });*/
     }
 
-    public void slideRight(View view) {
+   /* public void slideRight(View view) {
         binding.userMobileLayout.setVisibility(View.VISIBLE);
         binding.userMobile.setVisibility(View.GONE);
         binding.userMobile.setFocusable(false);
@@ -117,5 +119,5 @@ public class OnBoardingActivity extends AppCompatActivity {
             animateLow.setFillEnabled(true);
             view.startAnimation(animateLow);
         }
-    }
+    }*/
 }

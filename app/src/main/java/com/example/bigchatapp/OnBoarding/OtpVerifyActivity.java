@@ -22,12 +22,12 @@ public class OtpVerifyActivity extends AppCompatActivity {
         binding = ActivityOtpVerifyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.backButton.setOnClickListener(v -> {
+      /*  binding.backButton.setOnClickListener(v -> {
 
             finish();
         });
-
-        binding.submitOTP.setOnClickListener(v -> {
+*/
+        binding.btnSendOtp.setOnClickListener(v -> {
             Intent intent = new Intent(OtpVerifyActivity.this, UserProfileDialogActivity.class);
             startActivity(intent);
         });
