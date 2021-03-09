@@ -19,6 +19,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:civ_circle_background_color="#FF000000"
             android:src="@drawable/image"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:padding="5dp"/>
@@ -67,8 +68,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:src="@drawable/ic_incoming_call"
                 android:background="@drawable/call_bg"/>
 
