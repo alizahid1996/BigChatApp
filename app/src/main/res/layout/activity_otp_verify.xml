@@ -44,7 +44,18 @@
             android:layout_height="wrap_content"/>
 
         <com.google.android.material.textview.MaterialTextView
-            android:text="Please enter the verification code sent at\n +92 807 5153 "
+            android:text="Please enter the verification code sent at"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/phoneNumberonOTP"
+            android:text="+92 807 5153 "
             android:textColor="@color/white"
             android:layout_marginTop="10dp"
             android:textSize="16sp"
