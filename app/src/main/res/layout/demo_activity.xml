@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_gradient"
+    tools:context=".Dashboard.DashboardActivity">
+
+    <!-- Custom Toolbar -->
+    <RelativeLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/tvToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="135dp"
+            android:gravity="center"
+            android:src="@drawable/logo"
+            android:text="Messages"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/bree_serif"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <SearchView
+            android:id="@+id/searchIcon"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/menuIcon"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="@color/white"
+            android:padding="5dp"
+            app:tint="@color/white"
+            />
+
+        <ImageView
+            android:id="@+id/menuIcon"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_menu_icon"
+            app:tint="@color/colorPrimaryVeryLight"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/messages_layout_design"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            app:tabIndicatorColor="@color/white"
+            android:background="@null"
+            app:tabSelectedTextColor="@color/white"
+            android:backgroundTint="@null"
+            app:tabTextColor="#D1D1D1"
+            app:tabMaxWidth="0dp"
+            app:tabTextAppearance="@style/CustomTabText"
+            app:tabGravity="fill"
+            android:minWidth="200dp"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </androidx.viewpager.widget.ViewPager>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
