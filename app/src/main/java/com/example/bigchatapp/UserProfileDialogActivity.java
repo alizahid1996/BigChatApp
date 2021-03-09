@@ -58,6 +58,7 @@ public class UserProfileDialogActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         if (requestCode == CAMERA_IMAGE_CODE && resultCode == Activity.RESULT_OK) {
+            binding.peronImage.setClickable(false);
             personImageBitmap = (Bitmap) imageReturnedIntent.getExtras().get("data");
             binding.peronImage.setImageBitmap(personImageBitmap);
 

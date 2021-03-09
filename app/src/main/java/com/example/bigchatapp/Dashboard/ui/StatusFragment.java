@@ -24,8 +24,6 @@ public class StatusFragment extends Fragment {
 
     FragmentStatusBinding binding;
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,8 +35,8 @@ public class StatusFragment extends Fragment {
         adapter = new TopStatusAdapter(getActivity(),statusModels);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
-        binding.recyclerView.setLayoutManager(layoutManager);
-        binding.recyclerView.setAdapter(adapter);
+       /* binding.recyclerView.setLayoutManager(layoutManager);
+        binding.recyclerView.setAdapter(adapter);*/
         return  binding.getRoot();
     }
 }

@@ -10,11 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigChatApp">
-        <activity android:name=".Calling.OutGoingCallActivity"></activity>
-        <activity android:name=".Calling.IncomingCallActivity" />
+
+        <activity android:name=".Calling.OutGoingCallActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
+        <activity android:name=".Calling.IncomingCallActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
         <activity
             android:name=".UserProfileDialogActivity"
-            android:theme="@style/Theme.BigChatApp" />
+            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar">
