@@ -10,10 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BigChatApp">
-        <activity android:name=".UserProfileDialogActivity"
-            android:theme="@style/Theme.BigChatApp"/>
-
-
+        <activity android:name=".Calling.OutGoingCallActivity"></activity>
+        <activity android:name=".Calling.IncomingCallActivity" />
+        <activity
+            android:name=".UserProfileDialogActivity"
+            android:theme="@style/Theme.BigChatApp" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar">
@@ -22,28 +23,25 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".Menu.SettingActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar">
-
-        </activity>
-        <activity android:name=".ChatModule.ChatActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
-        <activity android:name=".OnBoarding.OtpVerifyActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar"/>
+        <activity
+            android:name=".Menu.SettingActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
+        <activity
+            android:name=".ChatModule.ChatActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
+        <activity
+            android:name=".OnBoarding.OtpVerifyActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
         <activity
             android:name=".Dashboard.DashboardActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar">
-
-        </activity>
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
         <activity
             android:name=".OnBoarding.OnBoardingActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar" >
-
-        </activity>
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -55,7 +53,6 @@
         tools:remove="android:maxSdkVersion" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
