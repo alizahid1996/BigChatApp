@@ -72,14 +72,12 @@
                     android:layout_marginLeft="10dp"
                     android:paddingTop="20dp"
                     app:ccp_showPhoneCode="true"
-                    app:ccp_defaultNameCode="IN"
                     android:layout_gravity="center_vertical"
                     app:ccp_rememberLastSelection="true"
                     app:ccpDialog_backgroundColor="@color/white"
                     app:ccp_hintExampleNumber="false"
                     app:ccp_autoDetectLanguage="true"
-                    app:ccp_autoFormatNumber="true"
-                    />
+                    app:ccp_autoFormatNumber="true" />
 
                 <View
                     android:layout_width="match_parent"

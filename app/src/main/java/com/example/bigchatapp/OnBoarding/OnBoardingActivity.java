@@ -28,7 +28,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         binding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
+         binding.ccP.registerCarrierNumberEditText(binding.phone);
         String Number = binding.ccP.getSelectedCountryCodeWithPlus();
 
         auth = FirebaseAuth.getInstance();
@@ -38,7 +38,6 @@ public class OnBoardingActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
 
         binding.phone.requestFocus();
 /*
