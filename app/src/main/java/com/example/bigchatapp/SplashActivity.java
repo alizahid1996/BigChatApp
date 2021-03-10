@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 
 import com.example.bigchatapp.ChatModule.ChatActivity;
 import com.example.bigchatapp.Dashboard.DashboardActivity;
+import com.example.bigchatapp.Models.User;
 import com.example.bigchatapp.OnBoarding.OnBoardingActivity;
 import com.example.bigchatapp.databinding.ActivitySplashBinding;
 
@@ -31,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
 
-            startActivity(new Intent(context, OnBoardingActivity.class));
+            startActivity(new Intent(context, UserProfileDialogActivity.class));
             finish();
 
 

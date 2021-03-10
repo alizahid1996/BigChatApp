@@ -2,7 +2,7 @@ package com.example.bigchatapp.Models;
 
 public class UserModel {
 
-    String userPic, userName, userPhone, userID,lastMessage;
+    String userPic, userName, userPhone, userID, lastMessage;
 
     public UserModel(String userPic, String userName, String userPhone, String userID, String lastMessage) {
         this.userPic = userPic;
@@ -10,7 +10,6 @@ public class UserModel {
         this.userPhone = userPhone;
         this.userID = userID;
         this.lastMessage = lastMessage;
-
 
     }
 

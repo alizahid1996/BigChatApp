@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class OnBoardingActivity extends AppCompatActivity {
 
     ActivityOnBoardingBinding binding;
-    boolean isUp = true;
     FirebaseAuth auth;
 
     @Override

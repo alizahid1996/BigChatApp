@@ -15,6 +15,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -39,6 +40,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 import static com.example.bigchatapp.Constants.CAMERA_IMAGE_CODE;
@@ -68,6 +70,7 @@ public class UserProfileDialogActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         textWatcher(binding.inputUserName, binding.inputUserNameLayout, "Please enter name");
 
@@ -100,7 +103,7 @@ public class UserProfileDialogActivity extends AppCompatActivity {
                 dialog.show();
                 if (uriImage != null)
                 {
-                    StorageReference ref = storage.getReference().child("Profiles").child("myfile");
+                    StorageReference ref = storage.getReference().child("Profiles").child("wu1qRPT5lFTdBJtYGtc5mltuqfw1");
                     ref.putFile(uriImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -110,10 +113,10 @@ public class UserProfileDialogActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         String imageUri = uri.toString();
-                                       // String userId = auth.getUid();
+                                        String userId = auth.getCurrentUser().getUid();
                                         String phone = auth.getCurrentUser().getPhoneNumber();
                                         String name = binding.inputUserName.getText().toString();
-                                        User user = new User("userId", name, phone, imageUri);
+                                        User user = new User(userId, name, phone, imageUri);
                                         database.getReference().child("users").setValue(user)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
@@ -138,7 +141,7 @@ public class UserProfileDialogActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    StorageReference ref = storage.getReference().child("Profiles").child("myfile");
+                    StorageReference ref = storage.getReference().child("Profiles").child("wu1qRPT5lFTdBJtYGtc5mltuqfw1");
                     ref.putFile(uriImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -148,10 +151,10 @@ public class UserProfileDialogActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         String imageUri = uri.toString();
-                                        // String userId = auth.getUid();
+                                        String userId = auth.getCurrentUser().getUid();
                                         String phone = auth.getCurrentUser().getPhoneNumber();
                                         String name = binding.inputUserName.getText().toString();
-                                        User user = new User("userId", name, phone, "No Image");
+                                        User user = new User(userId, name, phone, "No Image");
                                         database.getReference().child("users").setValue(user)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
@@ -181,29 +184,18 @@ public class UserProfileDialogActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-        if (requestCode == CAMERA_IMAGE_CODE && resultCode == Activity.RESULT_OK) {
-            personImageBitmap = (Bitmap) imageReturnedIntent.getExtras().get("data");
-            binding.peronImage.setImageBitmap(personImageBitmap);
-
-        }
-        if (requestCode == 45 && resultCode == RESULT_OK)
-        {
-            if (imageReturnedIntent != null)
-            {
-                binding.peronImage.setImageURI(imageReturnedIntent.getData());
-                uriImage = imageReturnedIntent.getData();
-            }
-
-            if(uriImage != null) {
-                try {
-                    InputStream inputStream = getContentResolver().openInputStream(uriImage);
-                    personImageBitmap = BitmapFactory.decodeStream(inputStream);
-                    binding.peronImage.setImageBitmap(personImageBitmap);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+        if (requestCode == GALLERY_IMAGE_CODE && resultCode == RESULT_OK) {
+            uriImage = imageReturnedIntent.getData();
+            try{
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriImage);
+                binding.peronImage.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+
     }
 
     @Override
