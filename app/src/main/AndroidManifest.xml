@@ -18,7 +18,7 @@
         </activity>
         <activity
             android:name=".UserProfileDialogActivity"
-            android:theme="@style/Theme.BigChatApp" />
+            android:theme="@style/Theme.BigChatApp.NoActionbar" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar">
@@ -27,6 +27,7 @@
         <activity
             android:name=".Menu.SettingActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar" />
+
         <activity
             android:name=".ChatModule.ChatActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar" />
