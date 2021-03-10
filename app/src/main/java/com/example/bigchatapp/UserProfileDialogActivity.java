@@ -1,6 +1,7 @@
 package com.example.bigchatapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,6 +43,8 @@ import com.google.firebase.storage.UploadTask;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
+import java.util.HashMap;
 
 import static com.example.bigchatapp.Constants.CAMERA_IMAGE_CODE;
 import static com.example.bigchatapp.Constants.CAMERA_PERMISSION_CODE;
@@ -64,210 +67,135 @@ public class UserProfileDialogActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         dialog = new ProgressDialog(this);
-        dialog.setTitle("Updating Profile");
-        dialog.setMessage("Please wait...");
+        dialog.setMessage("Updating profile...");
         dialog.setCancelable(false);
 
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
         auth = FirebaseAuth.getInstance();
 
-        textWatcher(binding.inputUserName, binding.inputUserNameLayout, "Please enter name");
-
-        binding.nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(UserProfileDialogActivity.this, DashboardActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
-
         binding.peronImage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                chooseImageDialog();
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 45);
             }
         });
 
         binding.nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 String name = binding.inputUserName.getText().toString();
-                if (name.isEmpty())
-                {
-                    binding.inputUserNameLayout.setError("Pleas Enter name");
+
+                if(name.isEmpty()) {
+                    binding.inputUserName.setError("Please type a name");
                     return;
                 }
+
                 dialog.show();
-                if (uriImage != null)
-                {
-                    StorageReference ref = storage.getReference().child("Profiles").child("wu1qRPT5lFTdBJtYGtc5mltuqfw1");
-                    ref.putFile(uriImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                if(uriImage != null) {
+                    StorageReference reference = storage.getReference().child("Profiles").child(auth.getUid());
+                    reference.putFile(uriImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            if (task.isSuccessful())
-                            {
-                                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            if(task.isSuccessful()) {
+                                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
                                     public void onSuccess(Uri uri) {
-                                        String imageUri = uri.toString();
-                                        String userId = auth.getCurrentUser().getUid();
+                                        String imageUrl = uri.toString();
+
+                                        String uid = auth.getUid();
                                         String phone = auth.getCurrentUser().getPhoneNumber();
                                         String name = binding.inputUserName.getText().toString();
-                                        User user = new User(userId, name, phone, imageUri);
-                                        database.getReference().child("users").setValue(user)
+
+                                        User user = new User(uid, name, phone, imageUrl);
+
+                                        database.getReference()
+                                                .child("users")
+                                                .child(uid)
+                                                .setValue(user)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
                                                         dialog.dismiss();
-                                                        Intent i = new Intent(UserProfileDialogActivity.this, DashboardActivity.class);
-                                                        startActivity(i);
+                                                        Intent intent = new Intent(UserProfileDialogActivity.this,DashboardActivity.class);
+                                                        startActivity(intent);
                                                         finish();
-
                                                     }
                                                 });
                                     }
                                 });
                             }
-                            else
-                            {
-                                dialog.dismiss();
-                                Toast.makeText(UserProfileDialogActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                            }
                         }
                     });
-                }
-                else
-                {
-                    StorageReference ref = storage.getReference().child("Profiles").child("wu1qRPT5lFTdBJtYGtc5mltuqfw1");
-                    ref.putFile(uriImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            if (task.isSuccessful())
-                            {
-                                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        String imageUri = uri.toString();
-                                        String userId = auth.getCurrentUser().getUid();
-                                        String phone = auth.getCurrentUser().getPhoneNumber();
-                                        String name = binding.inputUserName.getText().toString();
-                                        User user = new User(userId, name, phone, "No Image");
-                                        database.getReference().child("users").setValue(user)
-                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        dialog.dismiss();
-                                                        Intent i = new Intent(UserProfileDialogActivity.this, DashboardActivity.class);
-                                                        startActivity(i);
-                                                        finish();
+                } else {
+                    String uid = auth.getUid();
+                    String phone = auth.getCurrentUser().getPhoneNumber();
 
-                                                    }
-                                                });
-                                    }
-                                });
-                            }
-                            else
-                            {
-                                dialog.dismiss();
-                                Toast.makeText(UserProfileDialogActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                    User user = new User(uid, name, phone, "No Image");
+
+                    database.getReference()
+                            .child("users")
+                            .child(uid)
+                            .setValue(user)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    dialog.dismiss();
+                                    Intent intent = new Intent(UserProfileDialogActivity.this, DashboardActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            });
                 }
+
             }
         });
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-        if (requestCode == GALLERY_IMAGE_CODE && resultCode == RESULT_OK) {
-            uriImage = imageReturnedIntent.getData();
-            try{
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uriImage);
-                binding.peronImage.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(data != null) {
+            if(data.getData() != null) {
+                Uri uri = data.getData(); // filepath
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                long time = new Date().getTime();
+                StorageReference reference = storage.getReference().child("Profiles").child(time+"");
+                reference.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                        if(task.isSuccessful()) {
+                            reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String filePath = uri.toString();
+                                    HashMap<String, Object> obj = new HashMap<>();
+                                    obj.put("image", filePath);
+                                    database.getReference().child("users")
+                                            .child(FirebaseAuth.getInstance().getUid())
+                                            .updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            dialog.dismiss();
+                                            Intent i = new Intent(UserProfileDialogActivity.this, DashboardActivity.class);
+                                            startActivity(i);
+                                            finish();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    }
+                });
+
+
+                binding.peronImage.setImageURI(data.getData());
+                uriImage = data.getData();
             }
         }
-
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == CAMERA_PERMISSION_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(UserProfileDialogActivity.this, "Camera permission granted", Toast.LENGTH_LONG).show();
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_IMAGE_CODE);
-            } else {
-                Toast.makeText(UserProfileDialogActivity.this, "Camera permission denied", Toast.LENGTH_LONG).show();
-            }
-        }
-
-
-    }
-
-    private void chooseImageDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(UserProfileDialogActivity.this);
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-        View dialogView = LayoutInflater.from(UserProfileDialogActivity.this).inflate(R.layout.choose_image_dialog, viewGroup, false);
-
-        LinearLayout fromCamera = dialogView.findViewById(R.id.fromCamera);
-        LinearLayout fromGallery = dialogView.findViewById(R.id.fromGallery);
-        builder.setView(dialogView);
-        AlertDialog alertDialog = builder.create();
-        alertDialog.setCancelable(true);
-
-        fromCamera.setOnClickListener(v->{
-            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_CODE);
-                alertDialog.dismiss();
-            }
-            else {
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_IMAGE_CODE);
-                alertDialog.dismiss();
-            }
-        });
-
-        fromGallery.setOnClickListener(v->{
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(intent, GALLERY_IMAGE_CODE);
-            alertDialog.dismiss();
-        });
-
-        alertDialog.show();
-    }
-
-    private void textWatcher(TextInputEditText inputUsername, TextInputLayout inputUserLayout, String enter_email) {
-        inputUsername.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (count == 0)
-                    inputUserLayout.setError(enter_email);
-                else
-                    inputUserLayout.setError(null);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
     }
 }

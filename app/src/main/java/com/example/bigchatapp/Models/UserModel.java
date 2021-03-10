@@ -11,11 +11,12 @@ public class UserModel {
         this.userID = userID;
         this.lastMessage = lastMessage;
 
-    }
 
+    }
     public UserModel(){
 
     }
+
 
     public String getUserPic() {
         return userPic;

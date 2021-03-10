@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.bigchatapp.Adapters.UserAdapter;
+import com.example.bigchatapp.Models.User;
 import com.example.bigchatapp.Models.UserModel;
 import com.example.bigchatapp.R;
 import com.example.bigchatapp.databinding.FragmentChatBinding;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 public class ChatFragment extends Fragment {
     FragmentChatBinding binding;
     FirebaseDatabase database;
-    ArrayList<UserModel> list;
+    ArrayList<User> list;
     UserAdapter adapter;
 
     @Override
@@ -35,9 +36,10 @@ public class ChatFragment extends Fragment {
         binding = FragmentChatBinding.inflate(getLayoutInflater(), container, false);
 
         database = FirebaseDatabase.getInstance();
-        adapter = new UserAdapter(list, getActivity());
-        binding.chatsRecycler.setAdapter(adapter);
+
         binding.chatsRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+        list = new ArrayList<>();
+
 
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -45,8 +47,8 @@ public class ChatFragment extends Fragment {
                 list.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren())
                 {
-                    UserModel model = snapshot1.getValue(UserModel.class);
-                    list.add(model);
+                    User userModel = snapshot1.getValue(User.class);
+                    list.add(userModel);
 
                 }
                 adapter.notifyDataSetChanged();
@@ -57,6 +59,8 @@ public class ChatFragment extends Fragment {
 
             }
         });
+        adapter = new UserAdapter(list, getActivity());
+        binding.chatsRecycler.setAdapter(adapter);
 
         return binding.getRoot();
     }
