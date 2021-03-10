@@ -70,15 +70,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="80dp"
                     android:layout_marginLeft="10dp"
+                    app:ccp_defaultNameCode="PK"
                     android:paddingTop="20dp"
-                    app:ccp_countryAutoDetectionPref="LOCALE_SIM"
-                    app:ccp_autoDetectCountry="true"
                     app:ccp_showPhoneCode="true"
                     android:layout_gravity="center_vertical"
-                    app:ccp_rememberLastSelection="true"
                     app:ccpDialog_backgroundColor="@color/white"
                     app:ccp_hintExampleNumber="false"
-                    app:ccp_autoDetectLanguage="true"
                     app:ccp_autoFormatNumber="true" />
 
                 <View

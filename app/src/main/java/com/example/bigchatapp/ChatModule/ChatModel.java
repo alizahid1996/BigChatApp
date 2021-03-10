@@ -9,6 +9,9 @@ public class ChatModel {
 
     }
 
+    public ChatModel() {
+    }
+
     public ChatModel(String message, String senderID, String timeStamp) {
         this.message = message;
         this.senderID = senderID;
