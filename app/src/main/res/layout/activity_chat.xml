@@ -135,19 +135,19 @@
                 android:layout_marginTop="10dp"
                 android:text="Aug, 15 2020"/>
 
-          <!--  <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/chatMessgaerecyclerView"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chatMessageRecycler"
                 android:layout_width="match_parent"
                 android:overScrollMode="never"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="70dp"
-                android:paddingHorizontal="18dp" />-->
+                android:paddingHorizontal="18dp" />
 
-            <include layout="@layout/item_sender" />
+          <!--  <include layout="@layout/item_sender" />
             <include layout="@layout/item_receiver"/>
             <include layout="@layout/item_sender"/>
             <include layout="@layout/item_receiver"/>
-
+-->
         </LinearLayout>
 
         <!-- Bottom Layout -->

@@ -4,17 +4,15 @@ public class ChatModel {
     private String messageID, message, senderID;
     private String timeStamp;
     private int feelings = -1;
-    private String spec;
 
-    public ChatModel(){
+    public ChatModel(String userMessage, String senderUid, long time){
 
     }
 
-    public ChatModel(String message, String senderID, String timeStamp, String spec) {
+    public ChatModel(String message, String senderID, String timeStamp) {
         this.message = message;
         this.senderID = senderID;
         this.timeStamp = timeStamp;
-        this.spec = spec;
     }
 
     public String getMessageID() {
@@ -55,13 +53,5 @@ public class ChatModel {
 
     public void setFeelings(int feelings) {
         this.feelings = feelings;
-    }
-
-    public String getSpec() {
-        return spec;
-    }
-
-    public void setSpec(String spec) {
-        this.spec = spec;
     }
 }
