@@ -71,6 +71,8 @@
                     android:layout_height="80dp"
                     android:layout_marginLeft="10dp"
                     android:paddingTop="20dp"
+                    app:ccp_countryAutoDetectionPref="LOCALE_SIM"
+                    app:ccp_autoDetectCountry="true"
                     app:ccp_showPhoneCode="true"
                     android:layout_gravity="center_vertical"
                     app:ccp_rememberLastSelection="true"

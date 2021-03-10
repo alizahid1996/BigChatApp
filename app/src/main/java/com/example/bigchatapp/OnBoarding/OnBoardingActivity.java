@@ -33,11 +33,11 @@ public class OnBoardingActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        if(auth.getCurrentUser() != null) {
+        /*if(auth.getCurrentUser() != null) {
             Intent intent = new Intent(OnBoardingActivity.this, DashboardActivity.class);
             startActivity(intent);
             finish();
-        }
+        }*/
 
         binding.phone.requestFocus();
 /*
