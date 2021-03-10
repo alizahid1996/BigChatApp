@@ -44,7 +44,10 @@
             android:theme="@style/Theme.BigChatApp.NoActionbar" />
         <activity
             android:name=".Dashboard.DashboardActivity"
-            android:theme="@style/Theme.BigChatApp.NoActionbar" />
+            android:theme="@style/Theme.BigChatApp.NoActionbar" >
+
+                <category android:name="android.intent.category.LAUNCHER" />
+        </activity>
         <activity
             android:name=".OnBoarding.OnBoardingActivity"
             android:theme="@style/Theme.BigChatApp.NoActionbar" >
