@@ -9,14 +9,19 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
+import com.example.bigchatapp.Adapters.TopStatusAdapter;
+import com.example.bigchatapp.Dashboard.DashboardActivity;
 import com.example.bigchatapp.R;
 import com.example.bigchatapp.databinding.ActivityOnBoardingBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class OnBoardingActivity extends AppCompatActivity {
 
     ActivityOnBoardingBinding binding;
     boolean isUp = true;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +30,19 @@ public class OnBoardingActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-        String Number = binding.ccP.getSelectedCountryCodeWithPlus() + binding.phoneNumber.getText().toString().trim();
-        Log.d("Hy",Number);
-/*
+        String Number = binding.ccP.getSelectedCountryCodeWithPlus();
 
+        auth = FirebaseAuth.getInstance();
+
+        if(auth.getCurrentUser() != null) {
+            Intent intent = new Intent(OnBoardingActivity.this, DashboardActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+
+        binding.phone.requestFocus();
+/*
         binding.backButton.setOnClickListener(v -> {
 
             finish();
@@ -36,8 +50,10 @@ public class OnBoardingActivity extends AppCompatActivity {
 */
 
         binding.btnSendOtp.setOnClickListener(v -> {
+            //Toast.makeText(this, Number+""+binding.phone.getText().toString(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(OnBoardingActivity.this,OtpVerifyActivity.class);
-           intent.putExtra("phoneNumber",Number);
+           intent.putExtra("phoneNumber",Number+""+binding.phone.getText().toString());
+            //Toast.makeText(this, "OK"+binding.phone.getText().toString(), Toast.LENGTH_SHORT).show();
             startActivity(intent);
         });
 

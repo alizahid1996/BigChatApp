@@ -24,4 +24,9 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:fontFamily">@font/bree_serif</item>
     </style>
+
+    <style name="OTP" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+    </style>
 </resources>

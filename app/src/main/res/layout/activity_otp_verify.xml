@@ -64,30 +64,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <com.chaos.view.PinView
-            android:id="@+id/pinView"
+        <com.mukesh.OtpView
+            android:id="@+id/otp_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:itemCount="6"
-            app:itemWidth="40dp"
-            app:itemHeight="50dp"
-
-            android:textColor="@color/white"
-            android:textSize="16pt"
-            android:gravity="center"
-            style="@style/PinWidget.PinView"
-            app:itemRadius="5dp"
-            android:background="#78bc59"
-            android:itemBackground="#76bc58"
             android:inputType="number"
-            android:cursorVisible="true"
-            app:cursorColor="@color/colorPrimary"
-            app:hideLineWhenFilled="true"
-            app:lineWidth="0dp"
+            android:itemBackground="@color/white"
+            android:focusableInTouchMode="true"
+            app:OtpItemCount="6"
+            android:textColor="@color/colorPrimary"
+            app:OtpLineColor="@color/colorPrimary"
+            app:OtpViewType="line"
             />
 
 
