@@ -61,14 +61,6 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             userName = itemView.findViewById(R.id.userNameOfChat);
             userLastMessage = itemView.findViewById(R.id.userLastMessage);
             userMessageTime = itemView.findViewById(R.id.userMessageTime);
-
-            /*itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(context, ChatActivity.class);
-                    context.startActivity(i);
-                }
-            });*/
         }
     }
 }
