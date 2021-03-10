@@ -38,7 +38,7 @@ public class ChatFragment extends Fragment {
 
         database = FirebaseDatabase.getInstance();
 
-        //binding.chatsRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.chatsRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         list = new ArrayList<>();
 
 
@@ -57,11 +57,9 @@ public class ChatFragment extends Fragment {
                 });
 
         adapter = new UserAdapter(list, getActivity());
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(binding.chatsRecycler.HORIZONTAL);
         binding.chatsRecycler.setAdapter(adapter);
 
-        database.getReference().child("users").addValueEventListener(new ValueEventListener() {
+        /*database.getReference().child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
@@ -85,7 +83,7 @@ public class ChatFragment extends Fragment {
 
             }
         });
-       // binding.chatsRecycler.showShimmerAdapter();
+       // binding.chatsRecycler.showShimmerAdapter();*/
 
         return binding.getRoot();
     }
