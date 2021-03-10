@@ -1,7 +1,10 @@
 package com.example.bigchatapp.Models;
 
 public class User {
-    String uid, name, phoneNumber, profileImage;
+    private String uid, name, phoneNumber, profileImage;
+
+    public User() {
+    }
 
     public User(String uid, String name, String phoneNumber, String profileImage) {
         this.uid = uid;
@@ -10,8 +13,7 @@ public class User {
         this.profileImage = profileImage;
     }
 
-    public User() {
-    }
+
 
     public String getUid() {
         return uid;
