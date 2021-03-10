@@ -75,7 +75,6 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
 
-
         //Send Chat
         binding.sendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,13 +107,8 @@ public class ChatActivity extends AppCompatActivity {
                                         });
                             }
                         });
-
-
             }
         });
-
-
-
         //Back Button
         binding.backButton.setOnClickListener(new View.OnClickListener() {
             @Override
