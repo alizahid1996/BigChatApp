@@ -125,7 +125,7 @@ public class ChatActivity extends AppCompatActivity {
                         messages.clear();
                         for(DataSnapshot snapshot1 : snapshot.getChildren()) {
                             com.example.bigchatapp.Models.Message message = snapshot1.getValue(com.example.bigchatapp.Models.Message.class);
-                            message.setSenderId(snapshot1.getKey());
+                            message.setMessageId(snapshot1.getKey());
                             messages.add(message);
                         }
 
