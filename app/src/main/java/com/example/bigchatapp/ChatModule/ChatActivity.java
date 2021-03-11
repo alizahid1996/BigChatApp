@@ -84,7 +84,6 @@ public class ChatActivity extends AppCompatActivity {
                 Date date = new Date();
                 binding.chatMessage.setText("");
 
-
                 ChatModel model = new ChatModel(userMessage, senderUid, date.getTime());
                 database.getReference().child("chats")
                         .child(senderRoom)

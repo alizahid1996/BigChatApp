@@ -202,7 +202,6 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"/>
 
-
             </LinearLayout>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -219,10 +218,6 @@
                 app:fabCustomSize="45dp"
                 app:maxImageSize="20dp"
                 app:tint="#EDEDED" />
-
-
-
-
 
         </RelativeLayout>
 
