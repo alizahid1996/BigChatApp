@@ -56,7 +56,6 @@ public class DashboardActivity extends AppCompatActivity {
                             case R.id.logout:
                                 //Toast.makeText(DashboardActivity.this, "Opens a Logout Dialog", Toast.LENGTH_SHORT).show();
                                 FirebaseAuth.getInstance().signOut();
-                                finish();
                                 break;
 
                             case R.id.chat:

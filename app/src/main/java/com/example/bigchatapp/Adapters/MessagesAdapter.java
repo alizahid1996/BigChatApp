@@ -89,17 +89,17 @@ public class MessagesAdapter extends RecyclerView.Adapter {
         ReactionPopup popup = new ReactionPopup(context, config, (pos) -> {
             if(holder.getClass() == SentViewHolder.class) {
                 SentViewHolder viewHolder = (SentViewHolder)holder;
-                viewHolder.binding.feeling.setImageResource(reactions[position]);
+                viewHolder.binding.feeling.setImageResource(reactions[pos]);
                 viewHolder.binding.feeling.setVisibility(View.VISIBLE);
             } else {
                 ReceiverViewHolder viewHolder = (ReceiverViewHolder)holder;
-                viewHolder.binding.feeling.setImageResource(reactions[position]);
+                viewHolder.binding.feeling.setImageResource(reactions[pos]);
                 viewHolder.binding.feeling.setVisibility(View.VISIBLE);
 
 
             }
 
-            messages.setFeeling(position);
+            messages.setFeeling(pos);
 
             FirebaseDatabase.getInstance().getReference()
                     .child("chats")
