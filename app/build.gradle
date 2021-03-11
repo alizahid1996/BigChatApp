@@ -72,4 +72,8 @@ dependencies {
 
     //Recaptcha
     implementation 'androidx.browser:browser:1.3.0'
+
+    implementation "com.github.pgreze:android-reactions:1.3"
+    implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
+    implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
 }
