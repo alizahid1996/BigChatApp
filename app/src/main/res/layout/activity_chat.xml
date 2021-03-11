@@ -29,18 +29,36 @@
             android:src="@drawable/back_button_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"/>
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Online"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/image" />
 
         <TextView
-            android:id="@+id/activityLabel"
+            android:id="@+id/nameChatPerson"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="160dp"
             android:fontFamily="@font/bree_serif"
             android:gravity="center"
             android:text="Chat"
+            android:maxLines="1"
+            android:layout_marginLeft="30dp"
             android:textColor="@color/colorWhite"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/ivVoiceCall"
@@ -139,7 +157,7 @@
                 android:id="@+id/chatMessageRecycler"
                 android:layout_width="match_parent"
                 android:overScrollMode="never"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="70dp"
                 android:paddingHorizontal="18dp" />
 

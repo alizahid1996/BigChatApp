@@ -59,20 +59,14 @@ public class ChatFragment extends Fragment {
         adapter = new UserAdapter(list, getActivity());
         binding.chatsRecycler.setAdapter(adapter);
 
-        /*database.getReference().child("users").addValueEventListener(new ValueEventListener() {
+        database.getReference().child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for(DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    //User user = snapshot1.getValue(User.class);
-                    String uid = snapshot1.child("uid").getValue().toString();
-                    String name = snapshot1.child("name").getValue().toString();
-                    String phoneNumber = snapshot1.child("phoneNumber").getValue().toString();
-                    String profileImage = snapshot1.child("profileImage").getValue().toString();
-                    if(!uid.equals(FirebaseAuth.getInstance().getUid())){
-                        list.add(new User(uid,name,phoneNumber,profileImage));
-                    }
-
+                    User user = snapshot1.getValue(User.class);
+                    if(!user.getUid().equals(FirebaseAuth.getInstance().getUid()))
+                        list.add(user);
                 }
                 //binding.recyclerView.hideShimmerAdapter();
                 adapter.notifyDataSetChanged();
@@ -83,7 +77,6 @@ public class ChatFragment extends Fragment {
 
             }
         });
-       // binding.chatsRecycler.showShimmerAdapter();*/
 
         return binding.getRoot();
     }

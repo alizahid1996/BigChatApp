@@ -12,6 +12,8 @@ import com.example.bigchatapp.ChatModule.ChatModel;
 import com.example.bigchatapp.R;
 import com.example.bigchatapp.databinding.ItemReceiverBinding;
 import com.example.bigchatapp.databinding.ItemSenderBinding;
+import com.example.bigchatapp.databinding.TryItemRecieveBinding;
+import com.example.bigchatapp.databinding.TryItemSentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
