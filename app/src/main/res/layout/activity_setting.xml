@@ -193,7 +193,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSendOtp"
-                android:text="Confirm OTP"
+                android:text="Update Data"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/btn_gradient"
                 app:backgroundTint="@color/white"

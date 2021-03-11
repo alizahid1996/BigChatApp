@@ -20,6 +20,7 @@ import com.example.bigchatapp.Menu.SettingActivity;
 import com.example.bigchatapp.R;
 import com.example.bigchatapp.databinding.ActivityDashboardBinding;
 import com.futuremind.recyclerviewfastscroll.SectionTitleProvider;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -53,7 +54,9 @@ public class DashboardActivity extends AppCompatActivity {
                                 break;
 
                             case R.id.logout:
-                                Toast.makeText(DashboardActivity.this, "Opens a Logout Dialog", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(DashboardActivity.this, "Opens a Logout Dialog", Toast.LENGTH_SHORT).show();
+                                FirebaseAuth.getInstance().signOut();
+                                finish();
                                 break;
 
                             case R.id.chat:
