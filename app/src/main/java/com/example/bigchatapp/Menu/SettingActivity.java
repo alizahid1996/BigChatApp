@@ -34,7 +34,7 @@ public class SettingActivity extends AppCompatActivity {
         binding.userName.setText(user_name);
         Log.d("Hy",user_name);
         Glide.with(this).load(Image).centerInside().into(binding.settingImage);
-
+//
        /* String name = getIntent().getStringExtra("name");
         String profile = getIntent().getStringExtra("image");
         binding.userName.setText(name);
