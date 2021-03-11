@@ -1,29 +1,40 @@
 package com.example.bigchatapp.ChatModule;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Message;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.bigchatapp.Adapters.MessagesAdapter;
 import com.example.bigchatapp.Calling.IncomingCallActivity;
+import com.example.bigchatapp.Models.Message;
 import com.example.bigchatapp.R;
 import com.example.bigchatapp.databinding.ActivityChatBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -31,11 +42,14 @@ public class ChatActivity extends AppCompatActivity {
 
     ActivityChatBinding binding;
     MessagesAdapter adapter;
-    ArrayList<ChatModel> list;
+    ArrayList<com.example.bigchatapp.Models.Message> messages;
 
     String senderRoom, receiverRoom;
+
     FirebaseDatabase database;
     FirebaseStorage storage;
+
+    ProgressDialog dialog;
     String senderUid;
     String receiverUid;
 
@@ -48,16 +62,27 @@ public class ChatActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
 
-        list = new ArrayList<>();
-        binding.chatMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Uploading image...");
+        dialog.setCancelable(false);
+
+        messages = new ArrayList<>();
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         String name = getIntent().getStringExtra("name");
         String profile = getIntent().getStringExtra("image");
-        binding.nameChatPerson.setText(name);
+
+        binding.name.setText(name);
         Glide.with(ChatActivity.this).load(profile)
                 .placeholder(R.drawable.image)
                 .into(binding.profile);
 
+        binding.imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         receiverUid = getIntent().getStringExtra("uid");
         senderUid = FirebaseAuth.getInstance().getUid();
@@ -87,9 +112,9 @@ public class ChatActivity extends AppCompatActivity {
         senderRoom = senderUid + receiverUid;
         receiverRoom = receiverUid + senderUid;
 
-        adapter = new MessagesAdapter(this, list);
-        binding.chatMessageRecycler.setAdapter(adapter);
-
+        adapter = new MessagesAdapter(this, messages, senderRoom, receiverRoom);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setAdapter(adapter);
 
         database.getReference().child("chats")
                 .child(senderRoom)
@@ -97,16 +122,14 @@ public class ChatActivity extends AppCompatActivity {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        list.clear();
-                        for (DataSnapshot snapshot1 : snapshot.getChildren())
-                        {
-                            ChatModel model = snapshot1.getValue(ChatModel.class);
-                            model.setMessageID(snapshot1.getKey());
-                            list.add(model);
-
+                        messages.clear();
+                        for(DataSnapshot snapshot1 : snapshot.getChildren()) {
+                            com.example.bigchatapp.Models.Message message = snapshot1.getValue(com.example.bigchatapp.Models.Message.class);
+                            message.setSenderId(snapshot1.getKey());
+                            messages.add(message);
                         }
-                        adapter.notifyDataSetChanged();
 
+                        adapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -115,15 +138,14 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
 
-        //Send Chat
-        binding.sendMessage.setOnClickListener(new View.OnClickListener() {
+        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String userMessage = binding.chatMessage.getText().toString();
+            public void onClick(View v) {
+                String messageTxt = binding.messageBox.getText().toString();
 
                 Date date = new Date();
-                ChatModel message = new ChatModel(userMessage,senderUid,date.getTime());
-                binding.chatMessage.setText("");
+                com.example.bigchatapp.Models.Message message = new com.example.bigchatapp.Models.Message(messageTxt, senderUid, date.getTime());
+                binding.messageBox.setText("");
 
                 String randomKey = database.getReference().push().getKey();
 
@@ -134,53 +156,139 @@ public class ChatActivity extends AppCompatActivity {
                 database.getReference().child("chats").child(senderRoom).updateChildren(lastMsgObj);
                 database.getReference().child("chats").child(receiverRoom).updateChildren(lastMsgObj);
 
-
-                //ChatModel model = new ChatModel(userMessage, senderUid, date.getTime());
                 database.getReference().child("chats")
                         .child(senderRoom)
                         .child("messages")
                         .child(randomKey)
-                        .setValue(message)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        database.getReference().child("chats")
+                                .child(receiverRoom)
+                                .child("messages")
+                                .child(randomKey)
+                                .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                database.getReference().child("chats")
-                                        .child(receiverRoom)
-                                        .child("messages")
-                                        .child(randomKey)
-                                        .setValue(message)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
 
-                                            }
-                                        });
                             }
                         });
-            }
-        });
-        //Back Button
-        binding.backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
+                    }
+                });
+
             }
         });
 
-        binding.ivVoiceCall.setOnClickListener(new View.OnClickListener() {
+        binding.attachment.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent i =new Intent(ChatActivity.this, IncomingCallActivity.class);
-                startActivity(i);
-            }
-        });
-        binding.iVideoCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(ChatActivity.this, "Video Call Activity", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent, 25);
             }
         });
 
+        final Handler handler = new Handler();
+        binding.messageBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                database.getReference().child("presence").child(senderUid).setValue("typing...");
+                handler.removeCallbacksAndMessages(null);
+                handler.postDelayed(userStoppedTyping,1000);
+            }
+
+            Runnable userStoppedTyping = new Runnable() {
+                @Override
+                public void run() {
+                    database.getReference().child("presence").child(senderUid).setValue("Online");
+                }
+            };
+        });
+
+
+//        getSupportActionBar().setTitle(name);
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 25) {
+            if(data != null) {
+                if(data.getData() != null) {
+                    Uri selectedImage = data.getData();
+                    Calendar calendar = Calendar.getInstance();
+                    StorageReference reference = storage.getReference().child("chats").child(calendar.getTimeInMillis() + "");
+                    dialog.show();
+                    reference.putFile(selectedImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            dialog.dismiss();
+                            if(task.isSuccessful()) {
+                                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        String filePath = uri.toString();
+
+                                        String messageTxt = binding.messageBox.getText().toString();
+
+                                        Date date = new Date();
+                                        com.example.bigchatapp.Models.Message message = new Message(messageTxt, senderUid, date.getTime());
+                                        message.setMessage("photo");
+                                        message.setImageUrl(filePath);
+                                        binding.messageBox.setText("");
+
+                                        String randomKey = database.getReference().push().getKey();
+
+                                        HashMap<String, Object> lastMsgObj = new HashMap<>();
+                                        lastMsgObj.put("lastMsg", message.getMessage());
+                                        lastMsgObj.put("lastMsgTime", date.getTime());
+
+                                        database.getReference().child("chats").child(senderRoom).updateChildren(lastMsgObj);
+                                        database.getReference().child("chats").child(receiverRoom).updateChildren(lastMsgObj);
+
+                                        database.getReference().child("chats")
+                                                .child(senderRoom)
+                                                .child("messages")
+                                                .child(randomKey)
+                                                .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                database.getReference().child("chats")
+                                                        .child(receiverRoom)
+                                                        .child("messages")
+                                                        .child(randomKey)
+                                                        .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+
+                                                    }
+                                                });
+                                            }
+                                        });
+
+                                        //Toast.makeText(ChatActivity.this, filePath, Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        }
     }
 
     @Override
