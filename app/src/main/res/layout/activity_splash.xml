@@ -20,7 +20,7 @@
             android:id="@+id/img"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:src="@drawable/logo"
+            android:src="@drawable/logo_white"
             app:layout_constraintBottom_toBottomOf="@+id/animateLayout"
             app:layout_constraintTop_toTopOf="parent" />
 

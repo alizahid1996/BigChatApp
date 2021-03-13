@@ -54,6 +54,7 @@ public class OtpVerifyActivity extends AppCompatActivity {
         binding.btnSendOtp.setOnClickListener(v -> {
             Intent intent = new Intent(OtpVerifyActivity.this, UserProfileDialogActivity.class);
             startActivity(intent);
+            finish();
         });
 
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(auth)

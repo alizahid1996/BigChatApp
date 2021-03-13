@@ -23,7 +23,6 @@ public class SplashActivity extends AppCompatActivity {
 
     ActivitySplashBinding binding;
     Context context = SplashActivity.this;
-    private boolean loggedIn = false;
     FirebaseAuth auth;
 
     @Override
@@ -36,8 +35,7 @@ public class SplashActivity extends AppCompatActivity {
         Animation myAnim = AnimationUtils.loadAnimation(context, R.anim.splash_animation);
         binding.animateLayout.setAnimation(myAnim);
 
-        /*SharedPreferences loginPrefs = SplashActivity.this.getSharedPreferences("LOGIN INFO", MODE_PRIVATE);
-        loggedIn = loginPrefs.getBoolean("LOGGEDIN", false);*/
+
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
 

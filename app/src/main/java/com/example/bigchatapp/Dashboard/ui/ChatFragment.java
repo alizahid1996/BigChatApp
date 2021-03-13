@@ -30,6 +30,7 @@ public class ChatFragment extends Fragment {
     FirebaseDatabase database;
     ArrayList<User> list;
     UserAdapter adapter;
+    User user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,8 +47,8 @@ public class ChatFragment extends Fragment {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        User user = snapshot.getValue(User.class);
-                        list.add(user);
+                        user = snapshot.getValue(User.class);
+                        //list.add(user);
                     }
 
                     @Override

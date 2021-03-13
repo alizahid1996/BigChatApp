@@ -28,7 +28,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         binding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-         binding.ccP.registerCarrierNumberEditText(binding.phone);
+         binding.ccP.registerPhoneNumberTextView(binding.phone);
         String Number = binding.ccP.getSelectedCountryCodeWithPlus();
 
         auth = FirebaseAuth.getInstance();

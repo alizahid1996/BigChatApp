@@ -42,7 +42,7 @@ public class ChatActivity extends AppCompatActivity {
 
     ActivityChatBinding binding;
     MessagesAdapter adapter;
-    ArrayList<com.example.bigchatapp.Models.Message> messages;
+    ArrayList<Message> messages;
 
     String senderRoom, receiverRoom;
 
@@ -67,7 +67,6 @@ public class ChatActivity extends AppCompatActivity {
         dialog.setCancelable(false);
 
         messages = new ArrayList<>();
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         String name = getIntent().getStringExtra("name");
         String profile = getIntent().getStringExtra("image");
@@ -113,6 +112,9 @@ public class ChatActivity extends AppCompatActivity {
         receiverRoom = receiverUid + senderUid;
 
         adapter = new MessagesAdapter(this, messages, senderRoom, receiverRoom);
+
+        if(messages.size() > 0)
+            binding.recyclerView.smoothScrollToPosition(messages.size()-1);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(adapter);
 
@@ -124,12 +126,14 @@ public class ChatActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         messages.clear();
                         for(DataSnapshot snapshot1 : snapshot.getChildren()) {
-                            com.example.bigchatapp.Models.Message message = snapshot1.getValue(com.example.bigchatapp.Models.Message.class);
+                            Message message = snapshot1.getValue(Message.class);
                             message.setMessageId(snapshot1.getKey());
                             messages.add(message);
                         }
 
                         adapter.notifyDataSetChanged();
+                        if(messages.size() > 0)
+                            binding.recyclerView.smoothScrollToPosition(messages.size()-1);
                     }
 
                     @Override
@@ -144,7 +148,7 @@ public class ChatActivity extends AppCompatActivity {
                 String messageTxt = binding.messageBox.getText().toString();
 
                 Date date = new Date();
-                com.example.bigchatapp.Models.Message message = new com.example.bigchatapp.Models.Message(messageTxt, senderUid, date.getTime());
+                Message message = new Message(messageTxt, senderUid, date.getTime());
                 binding.messageBox.setText("");
 
                 String randomKey = database.getReference().push().getKey();
@@ -246,7 +250,7 @@ public class ChatActivity extends AppCompatActivity {
                                         String messageTxt = binding.messageBox.getText().toString();
 
                                         Date date = new Date();
-                                        com.example.bigchatapp.Models.Message message = new Message(messageTxt, senderUid, date.getTime());
+                                        Message message = new Message(messageTxt, senderUid, date.getTime());
                                         message.setMessage("photo");
                                         message.setImageUrl(filePath);
                                         binding.messageBox.setText("");

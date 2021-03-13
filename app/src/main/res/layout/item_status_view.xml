@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/image_layout"
-    android:layout_width="wrap_content"
+<RelativeLayout
+    android:id="@+id/image_layout"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
     android:layout_marginTop="8dp"
@@ -11,9 +12,10 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_centerInParent="true"
+        android:layout_centerInParent="false"
         android:padding="6dp"
         android:src="@mipmap/ic_launcher" />
 
@@ -21,12 +23,21 @@
         android:id="@+id/circular_status_view"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_centerInParent="true"
+        android:layout_centerInParent="false"
         app:portion_color="#5F0A87"
         app:portion_spacing="4dp"
         app:portion_width="4dp"
         app:portions_count="9" />
 
+    <TextView
+        android:id="@+id/statusName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="90dp"
+        android:text="Zia Ur Rehman"
+        android:textSize="24sp"
+        android:fontFamily="@font/bree_serif"/>
 
 
 </RelativeLayout>

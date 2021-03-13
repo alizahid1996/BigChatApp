@@ -1,13 +1,17 @@
 package com.example.bigchatapp.Dashboard;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,9 +21,11 @@ import android.widget.Toast;
 import com.example.bigchatapp.Adapters.FragmentAdapter;
 import com.example.bigchatapp.ChatModule.ChatActivity;
 import com.example.bigchatapp.Menu.SettingActivity;
+import com.example.bigchatapp.OnBoarding.OnBoardingActivity;
 import com.example.bigchatapp.R;
 import com.example.bigchatapp.databinding.ActivityDashboardBinding;
 import com.futuremind.recyclerviewfastscroll.SectionTitleProvider;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -54,9 +60,7 @@ public class DashboardActivity extends AppCompatActivity {
                                 break;
 
                             case R.id.logout:
-                                //Toast.makeText(DashboardActivity.this, "Opens a Logout Dialog", Toast.LENGTH_SHORT).show();
-                                FirebaseAuth.getInstance().signOut();
-                                break;
+                               /* logOut();*/
 
                             case R.id.chat:
                                 Intent in = new Intent(DashboardActivity.this, ChatActivity.class);
@@ -66,6 +70,37 @@ public class DashboardActivity extends AppCompatActivity {
 
                         return false;
                     }
+
+                   /* private void logOut() {
+                        showLogoutPopup();
+                    }*/
+
+                /*  private void showLogoutPopup() {
+                        AlertDialog dialogBuilder = new AlertDialog.Builder(DashboardActivity.this).create();
+                        dialogBuilder.setCancelable(false);
+                        LayoutInflater inflater = DashboardActivity.this.getLayoutInflater();
+                        View dialogView = inflater.inflate(R.layout.logout_dialog, null);
+
+                        MaterialButton yes = dialogView.findViewById(R.id.btnYes);
+                        MaterialButton no = dialogView.findViewById(R.id.btnNo);
+
+                        yes.setOnClickListener(v -> {
+                            dialogBuilder.dismiss();
+                         FirebaseAuth.getInstance().signOut();
+                            Intent intent = new Intent(DashboardActivity.this, OnBoardingActivity.class);
+                            startActivity(intent);
+
+
+
+                        });
+                        no.setOnClickListener(v -> {
+                            dialogBuilder.dismiss();
+                        });
+
+                        dialogBuilder.setView(dialogView);
+
+                        dialogBuilder.show();
+                    }*/
                 });
 
                 popupMenu.show();

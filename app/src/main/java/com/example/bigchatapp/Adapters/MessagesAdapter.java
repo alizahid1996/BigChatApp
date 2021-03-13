@@ -32,7 +32,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MessagesAdapter extends RecyclerView.Adapter {
 
     Context context;
-    ArrayList<com.example.bigchatapp.Models.Message> message;
+    ArrayList<Message> message;
 
     final int ITEM_SENT = 1;
     final int ITEM_RECEIVE = 2;
@@ -40,7 +40,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     String senderRoom;
     String receiverRoom;
 
-    public MessagesAdapter(Context context, ArrayList<com.example.bigchatapp.Models.Message> messages, String senderRoom, String receiverRoom) {
+    public MessagesAdapter(Context context, ArrayList<Message> messages, String senderRoom, String receiverRoom) {
         this.context = context;
         this.message = messages;
         this.senderRoom = senderRoom;
@@ -61,7 +61,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        com.example.bigchatapp.Models.Message messages = message.get(position);
+        Message messages = message.get(position);
         if(FirebaseAuth.getInstance().getUid().equals(messages.getSenderId())) {
             return ITEM_SENT;
         } else {
@@ -87,34 +87,36 @@ public class MessagesAdapter extends RecyclerView.Adapter {
                 .build();
 
         ReactionPopup popup = new ReactionPopup(context, config, (pos) -> {
-            if(holder.getClass() == SentViewHolder.class) {
-                SentViewHolder viewHolder = (SentViewHolder)holder;
-                viewHolder.binding.feeling.setImageResource(reactions[pos]);
-                viewHolder.binding.feeling.setVisibility(View.VISIBLE);
-            } else {
-                ReceiverViewHolder viewHolder = (ReceiverViewHolder)holder;
-                viewHolder.binding.feeling.setImageResource(reactions[pos]);
-                viewHolder.binding.feeling.setVisibility(View.VISIBLE);
+            if(pos >= 0) {
+
+                if (holder.getClass() == SentViewHolder.class) {
+                    SentViewHolder viewHolder = (SentViewHolder) holder;
+                    viewHolder.binding.feeling.setImageResource(reactions[pos]);
+                    viewHolder.binding.feeling.setVisibility(View.VISIBLE);
+                } else {
+                    ReceiverViewHolder viewHolder = (ReceiverViewHolder) holder;
+                    viewHolder.binding.feeling.setImageResource(reactions[pos]);
+                    viewHolder.binding.feeling.setVisibility(View.VISIBLE);
+
+
+                }
+
+                messages.setFeeling(pos);
+
+                FirebaseDatabase.getInstance().getReference()
+                        .child("chats")
+                        .child(senderRoom)
+                        .child("messages")
+                        .child(messages.getMessageId()).setValue(message);
+
+                FirebaseDatabase.getInstance().getReference()
+                        .child("chats")
+                        .child(receiverRoom)
+                        .child("messages")
+                        .child(messages.getMessageId()).setValue(message);
 
 
             }
-
-            messages.setFeeling(pos);
-
-            FirebaseDatabase.getInstance().getReference()
-                    .child("chats")
-                    .child(senderRoom)
-                    .child("messages")
-                    .child(messages.getMessageId()).setValue(message);
-
-            FirebaseDatabase.getInstance().getReference()
-                    .child("chats")
-                    .child(receiverRoom)
-                    .child("messages")
-                    .child(messages.getMessageId()).setValue(message);
-
-
-
             return true; // true is closing popup, false is requesting a new selection
         });
 

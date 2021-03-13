@@ -61,7 +61,7 @@ public class  UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists()) {
                             String lastMsg = snapshot.child("lastMsg").getValue(String.class);
-                            long time = snapshot.child("lastMsgTime").getValue(Long.class);
+                            Long time = snapshot.child("lastMsgTime").getValue(Long.class);
                             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
                             holder.binding.userMessageTime.setText(dateFormat.format(new Date(time)));
                             holder.binding.userLastMessage.setText(lastMsg);

@@ -65,10 +65,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.hbb20.CountryCodePicker
+                <com.rilixtech.widget.countrycodepicker.CountryCodePicker
                     android:id="@+id/ccP"
-                    android:layout_width="wrap_content"
-                    android:layout_height="80dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
                     android:layout_marginLeft="10dp"
                     app:ccp_defaultNameCode="PK"
                     android:paddingTop="20dp"
